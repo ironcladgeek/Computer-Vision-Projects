@@ -36,10 +36,10 @@ class PennFudanDataset(torch.utils.data.Dataset):
             boxes.append([xmin, ymin, xmax, ymax])
 
         # convert everything into a torch.Tensor
-        boxes = torch.as_tensor(boxes, dtype=torch.flot32)
+        boxes = torch.as_tensor(boxes, dtype=torch.float32)
         # there is only one class (pedestrian)
         labels = torch.ones((num_objs), dtype=torch.int64)
-        masks = torch.as_tensor(masks, dtype=uint8)
+        masks = torch.as_tensor(masks, dtype=torch.uint8)
 
         image_id = torch.tensor([idx])
         area = (boxes[:, 3] - boxes[:, 1]) * (boxes[:, 2] - boxes[:, 0])
